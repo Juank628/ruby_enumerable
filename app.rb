@@ -1,11 +1,4 @@
-module MyEnumerable
-  def my_all?
-    each do |item|
-      return false unless yield(item)
-    end
-    true
-  end
-end
+require_relative './MyEnumerable.rb'
 
 class MyList
   include MyEnumerable
@@ -19,6 +12,8 @@ class MyList
   end
 end
 
-list1 = MyList.new(4, 5, 6)
+list1 = MyList.new(1, 2, 3, 4)
 
-list1.each(MyEnumerable.my_all)
+puts list1.my_all? { |e| e < 5 }
+puts list1.my_all? { |e| e > 5 }
+puts list1.my_any? {|e| e == 2}
