@@ -1,7 +1,18 @@
-class MyList
-  include MyEnumerable 
+module MyEnumerable
+    def all
+    end
 
-  def initialize(listItems)
+    def any
+    end
+
+    def filter
+    end
+end
+
+class MyList
+  include MyEnumerable
+
+  def initialize(*listItems)
     @list = listItems
   end
 
@@ -10,6 +21,6 @@ class MyList
   end
 end
 
-list1 = MyList.new([4,5,6])
+list1 = MyList.new(4,5,6)
 
 list1.each
