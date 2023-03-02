@@ -1,12 +1,10 @@
 module MyEnumerable
-    def all
+  def my_all?
+    each do |item|
+      return false unless yield(item)
     end
-
-    def any
-    end
-
-    def filter
-    end
+    true
+  end
 end
 
 class MyList
@@ -16,11 +14,11 @@ class MyList
     @list = listItems
   end
 
-  def each
-    @list.each { |item| puts item }
+  def each(&block)
+    @list.each(&block)
   end
 end
 
-list1 = MyList.new(4,5,6)
+list1 = MyList.new(4, 5, 6)
 
-list1.each
+list1.each(MyEnumerable.my_all)
